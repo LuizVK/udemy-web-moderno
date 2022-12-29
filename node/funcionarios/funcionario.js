@@ -4,22 +4,41 @@ const axios = require('axios')
 const mulheresChinesas = funcionario => funcionario.genero == 'F' && funcionario.pais == 'China';
 const ordenacaoSalario = (funcionarioA, funcionarioB) => {
     if (funcionarioA.salario > funcionarioB.salario)
-        return -1
+        return 1
     
     if (funcionarioA.salario < funcionarioB.salario)
-        return 1
+        return -1
 
     return 0;
+}
+
+const chineses = f => f.pais === 'China'
+const mulheres = f => f.genero === 'F'
+const menorSalario = (func, funcAtual) => {
+    return func.salario < funcAtual.salario ? func : funcAtual
 }
 
 axios.get(url).then(response => {
     const funcionarios = response.data
     
-    const apenasMulheresChinesas = funcionarios
+    // Desafio, pegar o funcionario que seja uma mulher chinesa com menor salário
+
+    // Minha resolução
+    const resposta1 = funcionarios
         .filter(mulheresChinesas)
         .sort(ordenacaoSalario)
-    
-    console.log(apenasMulheresChinesas)
+        .slice(0, 1)
+        
+    console.log(resposta1)
+
+
+    // Resolução do professor
+    const resposta2 = funcionarios
+        .filter(chineses)
+        .filter(mulheres)
+        .reduce(menorSalario)
+
+    console.log(resposta2)
 })
 
 // {
