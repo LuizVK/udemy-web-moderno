@@ -52,3 +52,12 @@ axios.get(url).then(response => {
 //     empresa: 'Devpoint',
 //     salario: 22895.45
 // }
+
+
+
+
+
+/* Sobre o arquivo package.json 
+ * Para rodar o projeto (funcionario.js) pelo script 'start', basta dar 'npm start'
+ * No caso de scripts criados como 'dev', deve se usar 'npm run dev'
+ */
