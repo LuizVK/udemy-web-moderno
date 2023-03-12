@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: #ddd;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        .cabecalho {
+            width: 100%;
+            height: 60px;
+            background-color: #222;
+            border-bottom: solid 4px cornflowerblue;
+            padding: 5px 5px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            float: left;
+            height: 30px;
+            width: 240px;
+        }
+
+        .menu-toggle, nav, ul, li, aside, a {
+            display: inline-block;
+        }
+
+        .logo img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .menu {
+            height: 100%;
+            margin-left: 40px;
+        }
+
+        .menu ul li a {
+            padding: 10px;
+        }
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .menu a:hover {
+            color: #000;
+            background-color: cornflowerblue;
+        } 
+
+        aside {
+            float:right;
+            margin-right: 20px;
+        }
+
+        aside a {
+            padding: 10px 20px;
+        }
+
+        .botao {
+            background-color: cornflowerblue;
+            border-radius: 25px;
+        }
+
+        .destaque {
+            background-color: tomato;
+        }
+
+        .menu-toggle {
+            display: none;
+            float: right;
+            color: #fff;
+            font-size: 0.5em;
+            padding: 10px 15px;
+            background-color: #666;
+            border: solid 1px #777;
+            border-radius: 4px;
+            margin: 5px 0px 0px 20px;
+        }
+
+        @media (max-width: 550px) {
+            .menu-toggle { display: inline-block; }
+        }
+
+        @media (max-width: 750px) {
+            aside {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        function hashHasChanged() {
+            document.querySelectorAll(`li a`).forEach(elemento => 
+            { 
+                elemento.style.backgroundColor = ''
+                elemento.style.color = '#fff'
+            })
+            
+            var linkAtual = document.querySelector(`li a[href="${location.hash}"]`)
+            
+            if (linkAtual){
+                linkAtual.style.backgroundColor = 'cornflowerblue'
+                linkAtual.style.color = '#fff'
+            }
+        }
+        
+        window.onhashchange = hashHasChanged
+
+        hashHasChanged();
+    </script>
+</body>
+
+</html>

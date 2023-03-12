@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .curso {
+            position: relative;;
+            float: left;
+            width: 270px;
+            height: 320px;
+            padding: 5px;    
+            border: 1px solid #ddd;
+            margin: 0 0 30px 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, .5);
+        }
+
+        .curso img {
+            width: 100%;
+        }
+
+        .curso-info {
+            margin: 5px 5px 0;
+            height: 90px;
+            line-height: 1.7rem;
+            overflow-y: hidden;
+            
+        }
+
+        .curso-info h4 {
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        .curso-info p {
+            margin-top: 10px;
+        }
+
+        .curso-preco {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .curso-preco .preco-de {
+            text-decoration: line-through;
+            color: #990000;
+        }
+
+        .curso-preco .preco-por {
+            color: #007700;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Card</h1>
+
+    <h2>Objetivo</h2>
+    <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
+
+    <h2>Resultado</h2>
+    <div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
+            <div class="curso-info">
+                <h4>Docker: Ferramenta essencial para Desenvolvedores</h4>
+                <p>Prof. Fulano</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso2.jpg" />
+            <div class="curso-info">
+                <h4>Web Moderno com Javascript + Projetos</h4>
+                <p>Prof. Sicrano Filho</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
