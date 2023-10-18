@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        function mostrarPosicaoDoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        // on -> registra um evento (neste caso 'mousemove')
+        // mousemove -> quando o mouse se movimentar chama a função passada como parâmetro (neste caso 'mostrarPosicaoDoMouse')
+        $('body').on('mousemove', mostrarPosicaoDoMouse) 
+
+        // mouseover -> quando o mouse estiver em cima de $('#posicao') chama a função passada como parâmetro
+        $('#posicao').mouseover(e => { 
+            $('body').off('mousemove', mostrarPosicaoDoMouse) // off -> desregistra um evento (neste caso 'mousemove')
+        })
+
+        // mouseleave -> quando o mouse deixar de sobrepor o $('#posicao') chama a função passada como parâmetro
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostrarPosicaoDoMouse)
+        })
+
+        let cliques = 0
+        // click -> quando houver um evento de click 
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+
+        const backgroundOriginal = $('body').css('background-color')
+        // keyup -> quando a tecla é pressionada chama a função passada como parâmetro com o último valor informado
+        $('input').keyup(function (e) {
+            const valor = $(this).val()
+            if (valor.match(/#[\da-fA-F]{3,6}/)) {
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
+    </script>
+</body>
