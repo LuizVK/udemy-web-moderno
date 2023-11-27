@@ -6,7 +6,7 @@ export default function Home() {
   const [portsAmount, setPortsAmount] = useState<number>(3)
   const [selectedPort, setSelectedPort] = useState<number>(1)
 
-  let doors = new Array()
+  // let doors = new Array()
 
   function changePortsAmount(e: any) {
     setPortsAmount(e.target.value)
@@ -17,23 +17,19 @@ export default function Home() {
   }
 
   function renderDoors() {
-    return doors.map((e) => {
-      return (
-        <Door number={e} hasGift={selectedPort == e}></Door>
-      )
-    })
+    const doors = []
+
+    for(let i = 1; i <= portsAmount; i++)
+      doors.push(<Door number={i} hasGift={selectedPort == i}></Door>)
+
+    return doors
   }
 
   function iniciarClick() {
-    for (let i = 0; i < portsAmount; i++)
-      doors.push(i + 1)
-
-    console.log(doors.length, doors)
     setStarted(true)
   }
 
   function reiniciarClick() {
-    doors = new Array()
     setStarted(false)
   }
 
@@ -66,17 +62,13 @@ export default function Home() {
           ) : false
         }
       </div>
-      <div className="self-stretch flex justify-around flex-wrap">
-        <>
-          {
-            doors.map((e, i) => {
-              return (
-                <Door key={i} number={e} hasGift={selectedPort == e}></Door>
-              )
-            })
-          }
-        </>
-      </div>
+      { started ?
+        (
+          <div className="self-stretch flex justify-around flex-wrap">
+              {renderDoors()}
+          </div>
+        ) : false
+      }
     </div>
   )
 }
